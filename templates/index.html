@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Heartrate Monitoring System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="testbox">
+    <form action="/">
+      <div class="banner">
+        <h1>HeartRate Monitoring System User Input Form</h1>
+      </div>
+      <div class="item">
+        <p>Date of Birth</p>
+        <input type="date" name="dob"/>
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="item">
+        <p>Name</p>
+        <div class="name-item">
+          <input type="text" placeholder="First" name="first_name" />
+          <input type="text" placeholder="Last" name="last_name" />
+        </div>
+      </div>
+      <div class="item">
+        <p>Email</p>
+        <input type="email" name="email" />
+      </div>
+      <div class="item">
+        <p>Phone</p>
+        <input type="text" placeholder="### ### ####" name="phone_number" />
+      </div>
+      <div class="question">
+        <p>Gender</p>
+        <div class="question-answer">
+          <div>
+            <input type="radio" value="Male" id="radio_1" name="gender" />
+            <label for="radio_1" class="radio"><span>Male</span></label>
+          </div>
+          <div>
+            <input type="radio" value="Female" id="radio_2" name="gender" />
+            <label for="radio_2" class="radio"><span>Female</span></label>
+          </div>
+          <div>
+            <input type="radio" value="Other" id="radio_2" name="gender" />
+            <label for="radio_2" class="radio"><span>Other</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <p>Address</p>
+        <input type="text" name="address" placeholder="Street address" />
+        <div class="city-item">
+          <input type="text" name="city" placeholder="City"/>
+          <input type="text" name="region" placeholder="Region"/>
+          <input type="text" name="postal" placeholder="Postal / Zip code"/>
+          <select name="country">
+            <option value="">Country</option>
+            <option value="India">India</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Armenia">Armenia</option>
+            <option value="USA">USA</option>
+            <option value="Russia">Russia</option>
+          </select>
+        </div>
+      </div>
+      <div class="item">
+        <p>Video Path</p>
+        <input type="text" name="vidPath" />
+      </div>
+      <div class="item">
+        <p>Video Time</p>
+        <div class="city-item">
+          <select name="vidTime">
+            <option value="10">10 (Recommended)</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+            <option value="60">60</option>
+          </select>
+        </div>
+      </div>
+      <div class="item">
+        <p>Illness (if any)</p>
+        <input type="text" name="illness" />
+      </div>
+      <div class="item">
+        <p>Additional Message</p>
+        <textarea rows="3" name="misc_msg"></textarea>
+      </div>
+      <div class="btn-block">
+        <input type="submit" value="Save">
+        <input type="submit" formaction={{ url_for('user') }} value="Submit" width="50px">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

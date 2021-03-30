@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Heartrate Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_user.css') }}">
+</head>
+<body>
+        <div class="testbox">
+            Name : {{ name }}
+            <br>
+            Date of Birth : {{ dob }}
+            <br>
+            Gender : {{ gender }}
+            <br>
+            Email : {{ email }}
+            <br>
+            Phone Number : {{ phone_number }}
+            <br>
+            Address : {{ address }}
+            <br>
+            City : {{ city }}
+            <br>
+            Region : {{ region }}
+            <br>
+            Postal : {{ postal }}
+            <br>
+            Country : {{ country }}
+            <br>
+            Illness : {{ illness }}
+            <br>
+            PS : {{ misc_msg }}
+            <br>
+            Video Time : {{ vidTime }}
+            <br>
+            Heart Rate : {{ heartRate }}
+            <br>
+            <img src="/static/out.png" alt="img" width='1024' height='720'>
+        </div>
+</body>
+</html>
