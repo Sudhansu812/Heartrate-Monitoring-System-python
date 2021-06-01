@@ -1,40 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <title>Heartrate Monitoring System</title>
+    <title>HEARTRATE MONITOR</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style_user.css') }}">
 </head>
+
 <body>
-        <div class="testbox">
-            Name : {{ name }}
-            <br>
-            Date of Birth : {{ dob }}
-            <br>
-            Gender : {{ gender }}
-            <br>
-            Email : {{ email }}
-            <br>
-            Phone Number : {{ phone_number }}
-            <br>
-            Address : {{ address }}
-            <br>
-            City : {{ city }}
-            <br>
-            Region : {{ region }}
-            <br>
-            Postal : {{ postal }}
-            <br>
-            Country : {{ country }}
-            <br>
-            Illness : {{ illness }}
-            <br>
-            PS : {{ misc_msg }}
-            <br>
-            Video Time : {{ vidTime }}
-            <br>
-            Heart Rate : {{ heartRate }}
-            <br>
-            <img src="/static/out.png" alt="img" width='1024' height='720'>
+    <div class="container">
+        <div class="container_left">
+            <div class="heading">
+                <h1>Welcome</h1>
+                <h1>{{ name }}</h1>
+            </div>
+            <table class="table-content" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <th class="tr_left">Age</th>
+                    <td>{{ age }}</th>
+                </tr>
+                <tr>
+                    <th class="tr_left">Gender</th>
+                    <td>{{ gender }}</th>
+                </tr>
+                <tr>
+                    <th class="tr_left">Email</th>
+                    <td>{{ email }}</th>
+                </tr>
+                <tr>
+                    <th class="tr_left">Phone Number</th>
+                    <td>{{ phone_number }}</th>
+                </tr>
+                <tr>
+                    <th class="tr_left">Adress</th>
+                    <td>{{ city }}, {{ region }}</th>
+                </tr>
+            </table>
         </div>
+        <div class="container_right">
+            <div class="heading_right">
+                <h1>Results</h1>
+            </div>
+            <table class="table-content" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <th style="font-size: 17px">&nbsp Heart Rate : {{ hrm }}</th>
+                </tr>
+                <tr>
+                    <td><img class="hrm_img" src="/static/out.png" alt="image"></td>
+                </tr>
+                <tr>
+                    <td> Illness : {{ illness }}</td>
+                </tr>
+                <tr>
+                    <td> Medication : {{ misc_msg }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 </body>
+
 </html>
