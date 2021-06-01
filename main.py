@@ -6,10 +6,10 @@ from script import *
 
 app = Flask(__name__, static_folder="C:\\Users\\KIIT\\Desktop\\Final\\static")
 
-valDict = {'dob' : '','first_name' : '', 'last_name' : '', 'email' : '', 'phone_number' : '',
+valDict = {'age' : '','first_name' : '', 'last_name' : '', 'email' : '', 'phone_number' : '',
         'gender' : '' ,'address' : '','city' : '','region' : '','postal' : '' ,
          'vidPath' : '', 'country' : '','vidTime' : '','illness' : '','misc_msg' : ''}
-vidTime = 10
+
 #addr = "C:\\Users\\KIIT\\Desktop\\Major Project\\Flask\\Repos\\test14.mp4"
 @app.route("/")
 def index():
@@ -24,21 +24,23 @@ def index():
     valDict['country'] = str(escape(request.args.get('country', '')))
     valDict['illness'] = str(escape(request.args.get('illness', '')))
     valDict['misc_msg'] = str(escape(request.args.get('misc_msg', '')))
-    valDict['dob'] = str(escape(request.args.get('dob', '')))
+    valDict['age'] = str(escape(request.args.get('age', '')))
     valDict['gender'] = str(escape(request.args.get('gender', '')))
     valDict['vidPath'] = str(escape(request.args.get('vidPath', '')))
-    global vidTime
+    valDict['vidTime'] = escape(request.args.get('vidTime',type=int))
     return render_template("index.html")
 
 @app.route("/user")
 def user():
+    vidTime = int(valDict['vidTime'])
     hrm = hrtRate(valDict['vidPath'],vidTime)
-    return render_template("user.html",name=valDict['first_name'], dob=valDict['dob'], 
+    name = valDict['first_name'] + ' ' + valDict['last_name']
+    return render_template("user.html",name=name, age=valDict['age'], 
     gender = valDict['gender'], email = valDict['email'], phone_number = valDict['phone_number'], 
     address = valDict['address'], city = valDict['city'], region = valDict['region'],
     postal = valDict['postal'], country = valDict['country'], illness = valDict['illness'],
-    misc_msg = valDict['misc_msg'], vidTime = vidTime, heartRate = hrm)
+    misc_msg = valDict['misc_msg'], vidTime = vidTime, hrm = hrm)
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
