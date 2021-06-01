@@ -30,9 +30,10 @@ def hrtRate(vidP,vidT):
         vid.release()
         return nof
     #This method is used to make subplots
-    def make_plot(axs,tFrame,data,j):
+    def make_plot(axs, tFrame, data, j, s):
         plt.figure(num=None, figsize=(12, 8), dpi=1200, facecolor='w', edgecolor='k')
         axs[j].plot(tFrame,data)
+        axs[j].set_title(s)
 
     '''
     Variables are declares here
@@ -53,7 +54,7 @@ def hrtRate(vidP,vidT):
     #tFrame = np.zeros(nFrames)
     #User input for total video time
     vidTime = int(vidT)
-
+    print(vidTime)
     #Total number of frames with respect to vidTime
     totalLen = int(vidTime * (fps + 1))
 
@@ -196,11 +197,13 @@ def hrtRate(vidP,vidT):
 
     #Creating a pane for plotting 4 different graphs
     fig, axs = plt.subplots(4)
+    fig.tight_layout(h_pad = 2)
     fig.suptitle('Heart Rate')
-    make_plot(axs, tFrame, gData,0)
-    make_plot(axs, tFrame, rGraph, 1)
-    make_plot(axs, tFrame, fData,2)
-    make_plot(axs, tFrame, sqData,3)
+    plt.subplots_adjust(top=0.85)
+    make_plot(axs, tFrame, gData,0, "First Plot")
+    make_plot(axs, tFrame, rGraph, 1, "Corrected Plot")
+    make_plot(axs, tFrame, fData, 2, "Filtered Plot")
+    make_plot(axs, tFrame, sqData, 3, "Square Plot")
 
     fileExists = os.path.exists('static\\out.png')
     if(fileExists):
