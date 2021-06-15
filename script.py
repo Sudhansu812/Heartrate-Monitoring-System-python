@@ -118,7 +118,7 @@ def hrtRate(vidP,vidT):
     while k < framesPerBatch:
         if rectifiedGraph[k] >= max_var:
             max_var = rectifiedGraph[k]
-        elif rectifiedGraph[k] <= min_var:
+        if rectifiedGraph[k] <= min_var:
             min_var = rectifiedGraph[k]
         k = k + 1
 
@@ -137,7 +137,7 @@ def hrtRate(vidP,vidT):
                 break
             if rectifiedGraph[k] >= max_var:
                 max_var = rectifiedGraph[k]
-            elif rectifiedGraph[k] <= min_var:
+            if rectifiedGraph[k] <= min_var:
                 min_var = rectifiedGraph[k]
             k = k + 1
         batch_median = int((max_var + min_var)/2)
@@ -158,7 +158,7 @@ def hrtRate(vidP,vidT):
     rGraph[nFrames - 1] = rGraph[nFrames - 2]
 
     #Filtering the data with median filter to remove unwanted noise with a factor 
-    #of 9
+    #of 5
     fData = medfilt(rGraph,5)
 
     #A threshold is created to recify the plot
